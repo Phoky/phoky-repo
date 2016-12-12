@@ -6,7 +6,7 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 16:33:07 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/01 18:17:29 by rcolleau         ###   ########.fr       */
+/*   Updated: 2016/12/08 11:16:05 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ char	*ft_strrev(char *str)
 	int		i;
 	int		j;
 
-	i = (ft_strlen(str) - 1);
+	i = ft_strlen(str);
 	j = 0;
 	if (*str == 0)
 		return (NULL);
-	s1 = (char *)malloc(sizeof(char) * i);
+	s1 = (char *)malloc(sizeof(char) * (i + 1));
 	if (s1 == NULL)
 		return (NULL);
-	while (i >= 0)
-		s1[j++] = str[i--];
+	while (i > 0)
+		s1[j++] = str[--i];
 	s1[j] = '\0';
 	return (s1);
 }

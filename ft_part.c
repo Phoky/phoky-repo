@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_part.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 09:58:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/09 18:02:13 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/12/07 09:11:31 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/12/07 13:12:14 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_part(const char *str, int c)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	int i;
 
 	i = 0;
-	d = ((unsigned char *)dst);
-	s = ((unsigned char *)src);
-	if (s < d)
-	{
-		while (len--)
-			d[len] = s[len];
-	}
-	else
-		while (len--)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	return (dst);
+	while (str[i] != c && str[i] != '\0')
+		i++;
+	return (i);
 }

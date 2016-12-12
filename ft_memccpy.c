@@ -6,7 +6,7 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 09:18:05 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/11/30 19:23:05 by rcolleau         ###   ########.fr       */
+/*   Updated: 2016/12/12 15:15:43 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n || ((char *)dst)[i] == c)

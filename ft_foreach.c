@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 09:58:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/09 18:02:13 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/11/04 16:46:36 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/11/04 17:11:17 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	int	i;
 
 	i = 0;
-	d = ((unsigned char *)dst);
-	s = ((unsigned char *)src);
-	if (s < d)
+	while (i < length)
 	{
-		while (len--)
-			d[len] = s[len];
+		(*f)(tab[i]);
+		i++;
 	}
-	else
-		while (len--)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	return (dst);
 }

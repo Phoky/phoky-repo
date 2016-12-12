@@ -6,7 +6,7 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:48:35 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/02 15:12:39 by rcolleau         ###   ########.fr       */
+/*   Updated: 2016/12/07 14:11:21 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	*ft_memalloc(size_t size)
 {
 	void *mem;
 
-	if (size == 0)
-		mem = malloc(1);
-	else if (size != 0)
-		mem = malloc(size);
+	mem = malloc(size);
 	if (mem == NULL)
 		return (NULL);
+	ft_bzero(mem, size);
 	return (mem);
 }

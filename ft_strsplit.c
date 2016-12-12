@@ -6,13 +6,13 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:57:47 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/11/30 18:04:31 by rcolleau         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:29:15 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_ordo(const char *s, int c)
+static int		ft_ordo(const char *s, int c)
 {
 	int	comp;
 
@@ -20,40 +20,17 @@ int		ft_ordo(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s != c)
+		{
 			comp++;
+			while (*s != c)
+				s++;
+		}
 		s++;
 	}
 	return (comp);
 }
 
-int		ft_part(const char *str, int c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != c && str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_ptr(char *dest, const char *str, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	dest = (char *)malloc(sizeof(char) * n);
-	if (dest == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	int		i;
 	int		m;
@@ -61,10 +38,13 @@ char	**ft_strsplit(char const *s, char c)
 	int		o;
 	char	**tbl;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	o = 0;
 	n = ft_strlen(s);
-	tbl = (char **)malloc(sizeof(*tbl) * (ft_ordo(s, c)));
+	if ((tbl = (char **)malloc(sizeof(char*) * (ft_ordo(s, c) + 1))) == NULL)
+		return (NULL);
 	while (i < n)
 	{
 		while (s[i] == c)
@@ -77,5 +57,6 @@ char	**ft_strsplit(char const *s, char c)
 			i = i + m;
 		}
 	}
+	tbl[o] = NULL;
 	return (tbl);
 }

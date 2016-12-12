@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 09:58:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/09 18:02:13 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/11/02 18:15:03 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/12/09 17:39:36 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_swap(int *a, int *b)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	int *swap;
 
-	i = 0;
-	d = ((unsigned char *)dst);
-	s = ((unsigned char *)src);
-	if (s < d)
-	{
-		while (len--)
-			d[len] = s[len];
-	}
-	else
-		while (len--)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	return (dst);
+	swap = 0;
+	*swap = *a;
+	*a = *b;
+	*b = *swap;
 }

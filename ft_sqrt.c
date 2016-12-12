@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 09:58:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/09 18:02:13 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/11/03 12:22:43 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/12/09 17:32:45 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_sqrt(int nb)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	int	i;
+	int	c;
+	int	r;
 
-	i = 0;
-	d = ((unsigned char *)dst);
-	s = ((unsigned char *)src);
-	if (s < d)
+	c = nb;
+	i = 1;
+	if (nb < 0 || nb > 2147395600)
+		return (0);
+	while (c != 0)
 	{
-		while (len--)
-			d[len] = s[len];
+		r = i * i;
+		if (r == nb)
+			return (i);
+		i++;
+		c--;
 	}
-	else
-		while (len--)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	return (dst);
+	return (0);
 }

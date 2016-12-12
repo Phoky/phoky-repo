@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 09:58:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/09 18:02:13 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/11/04 13:14:34 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/11/04 14:37:53 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		*ft_range(int min, int max)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	int	i;
+	int	*tbl;
 
-	i = 0;
-	d = ((unsigned char *)dst);
-	s = ((unsigned char *)src);
-	if (s < d)
+	i = min;
+	tbl = malloc(sizeof(int) * ((max - min) + 1));
+	while (min < max)
 	{
-		while (len--)
-			d[len] = s[len];
+		tbl[i] = (min);
+		i++;
+		min++;
 	}
-	else
-		while (len--)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	return (dst);
+	return (tbl);
 }

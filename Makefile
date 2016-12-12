@@ -6,7 +6,7 @@
 #    By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/09 17:55:16 by rcolleau          #+#    #+#              #
-#    Updated: 2016/12/02 13:36:20 by rcolleau         ###   ########.fr        #
+#    Updated: 2016/12/12 15:20:46 by rcolleau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,15 +66,31 @@ SRCS =	ft_memset.c \
 		ft_putnbr_fd.c \
 		ft_strrev.c \
 		ft_nblen.c \
-
+		ft_part.c \
+		ft_ptr.c \
+		ft_abs.c \
+		ft_foreach.c \
+		ft_range.c \
+		ft_recursive_factorial.c \
+		ft_sqrt.c \
+		ft_swap.c \
+		ft_lstnew.c \
+		ft_lstdelone.c \
+		ft_lstdel.c \
+		ft_lstadd.c \
+		ft_lstmap.c \
+		ft_lstiter.c \
+		
 INC = libft.h
 
 OBJS = $(SRCS:.c=.o)
 
+FLAGS = -Wall -Wextra -Werror
+
 all: $(NAME)
 
 $(OBJS):
-	gcc -c $(SRCS) -I $(INC)
+	gcc $(FLAGS) -c $(SRCS) -I $(INC)
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
