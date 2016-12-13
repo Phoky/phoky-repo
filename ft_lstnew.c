@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptr.c                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 09:13:30 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/12 20:05:17 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/12/07 13:07:08 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/12/13 18:37:32 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_ptr(char *dest, const char *src, size_t n)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	size_t	i;
+	t_list	*new;
 
-	i = 0;
-	dest = (char *)malloc(sizeof(char) * n + 1);
-	if (dest == NULL)
+	if ((new = (t_list *)malloc(sizeof(content_size))) == NULL)
 		return (NULL);
-	while (i < n)
+	if (content == NULL)
 	{
-		dest[i] = src[i];
-		i++;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	dest[i] = '\0';
-	return (dest);
+	else
+	{
+		new->content = (void *)content;
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }

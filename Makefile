@@ -6,7 +6,7 @@
 #    By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/09 17:55:16 by rcolleau          #+#    #+#              #
-#    Updated: 2016/12/12 15:20:46 by rcolleau         ###   ########.fr        #
+#    Updated: 2016/12/13 12:19:59 by rcolleau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,9 +78,9 @@ SRCS =	ft_memset.c \
 		ft_lstdelone.c \
 		ft_lstdel.c \
 		ft_lstadd.c \
-		ft_lstmap.c \
 		ft_lstiter.c \
-		
+		ft_lstmap.c \
+
 INC = libft.h
 
 OBJS = $(SRCS:.c=.o)
