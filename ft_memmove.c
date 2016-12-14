@@ -6,7 +6,7 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 09:58:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/09 18:02:13 by rcolleau         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:38:37 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			d[len] = s[len];
 	}
 	else
+	{
 		while (len--)
 		{
 			d[i] = s[i];
 			i++;
 		}
-	return (dst);
+	}
+	return (d);
 }

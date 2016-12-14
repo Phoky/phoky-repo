@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 13:08:55 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/13 18:23:28 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/12/14 11:04:08 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/12/14 11:29:56 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
 	if (*alst != NULL && del != NULL)
 	{
@@ -20,5 +20,4 @@ void	*ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 		free(*alst);
 		*alst = NULL;
 	}
-	return (NULL);
 }

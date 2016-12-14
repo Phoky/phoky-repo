@@ -6,7 +6,7 @@
 #    By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/09 17:55:16 by rcolleau          #+#    #+#              #
-#    Updated: 2016/12/13 12:19:59 by rcolleau         ###   ########.fr        #
+#    Updated: 2016/12/14 18:20:15 by rcolleau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ SRCS =	ft_memset.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_lstadd_end.c \
 
 INC = libft.h
 
