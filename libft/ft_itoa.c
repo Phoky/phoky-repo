@@ -28,7 +28,6 @@ static char	*ft_alloc_nb(int n)
 char		*ft_itoa(int n)
 {
 	char	*str;
-	char	*s1;
 	int		i;
 	int		f;
 
@@ -47,7 +46,6 @@ char		*ft_itoa(int n)
 	if (f == -1)
 		str[i++] = '-';
 	str[i] = '\0';
-	s1 = ft_strrev(str);
-	free(str);
-	return (s1);
+	str = ft_strrev(str);
+	return (str);
 }
