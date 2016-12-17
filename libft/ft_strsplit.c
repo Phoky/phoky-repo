@@ -22,7 +22,8 @@ static int		ft_ordo(const char *s, int c)
 		if (*s != c)
 		{
 			comp++;
-			while (*s != c)
+			s++;
+			while (*s != c && *s)
 				s++;
 		}
 		s++;
