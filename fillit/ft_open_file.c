@@ -15,8 +15,10 @@
 int		ft_check_error(char *str)
 {
 	int		i;
+	int		l;
 
 	i = 0;
+	l = 0;
 	if (str == NULL)
 		return (0);
 	while (str[i] != '\0')
@@ -51,7 +53,7 @@ char	*ft_open_file(char *str)
 		sf = ft_strjoin(sf, buf);
 	}
 	if (ft_check_error(sf) == 0)
-		return ("Error");
+		return ("ERROR");
 	else
 		return (sf);
 }

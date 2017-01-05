@@ -15,8 +15,14 @@
 int		main(int argc, char **argv)
 {
 	char	*str;
+	char	**tbl;
+	int		i;
+	int		n;
 
 	str = NULL;
+	tbl = NULL;
+	i = 0;
+	n = 3;
 	if (argc != 2)
 	{
 		if (argc == 1)
@@ -25,6 +31,24 @@ int		main(int argc, char **argv)
 			ft_putstr("Too Many Files\n");
 		return (0);
 	}
-	str = ft_open_file(argv[1]);
-	ft_putstr(str);
+	if (ft_strequ(str = ft_open_file(argv[1]), "ERROR") == 1)
+	{
+		ft_putstr("Error");
+		return (0);
+	}
+	tbl = first_split(str);
+	if ((ft_strequ(*tbl, "ERROR")) == 1)
+	{
+		ft_putstr("Error");
+		return (0);
+	}
+//	else
+//	{
+//		while (*tbl)
+//		{
+//			ft_putstr(*tbl);
+//			tbl++;
+//		}
+//	}
+	return (0);
 }
