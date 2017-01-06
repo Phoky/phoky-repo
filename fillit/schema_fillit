@@ -1,0 +1,17 @@
+-> recup tbl des tetri en string :
+tbl[0] = ...#\n...#\n..#.\n..#.\n
+tbl[1] = .#..\n.##.\n.#..\n....\n
+tbl[2] = ....\n..##\n..#.\n..#.\n
+
+while (tbl[i])
+{
+	lstetrinew(cree un maillon avec un char** de taille [4][4] initialise a NULL)
+	i++;
+}
+
+recup *->lst;
+
+while (*lst)
+{
+	lstmap(*lst, ft_strsplit(tbl[i]));
+}

@@ -2,13 +2,15 @@
 
 int		check_tbl(char **tbl)
 {
-	while(*tbl)
+	int	i;
+
+	i = 0;
+	while(tbl[i])
 	{
-		if (**tbl == '\n')
+		if (tbl[i][0] == '\n')
 			return (0);
-//		ft_putstr(*tbl);
-		printf("s = %s", *tbl);
-		tbl++;
+		ft_putstr(tbl[i]);
+		i++;
 	}
 	return (1);
 }

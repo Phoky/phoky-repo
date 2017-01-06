@@ -15,10 +15,8 @@
 int		ft_check_error(char *str)
 {
 	int		i;
-	int		l;
 
 	i = 0;
-	l = 0;
 	if (str == NULL)
 		return (0);
 	while (str[i] != '\0')

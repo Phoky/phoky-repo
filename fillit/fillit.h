@@ -1,7 +1,7 @@
 #ifndef _FILLIT_H
 #define _FILLIT_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
@@ -10,7 +10,7 @@
 # include <sys/uio.h>
 # include <stdio.h>
 
-#define BUF_SIZE 39
+#define BUF_SIZE 11
 
 //typedef struct		s_list
 //{

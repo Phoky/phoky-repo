@@ -16,13 +16,9 @@ int		main(int argc, char **argv)
 {
 	char	*str;
 	char	**tbl;
-	int		i;
-	int		n;
 
 	str = NULL;
 	tbl = NULL;
-	i = 0;
-	n = 3;
 	if (argc != 2)
 	{
 		if (argc == 1)
