@@ -12,13 +12,32 @@
 
 #include "fillit.h"
 
+//void		printtbl(char ***tbl)
+//{
+//	int	i;
+//	int	j;
+
+//	i = 0;
+//	j = 0;
+//	while (tbl[i])
+//	{
+//		while (tbl[i][j])
+//		{
+//			ft_putstr(tbl[i][j]);
+//			j++;
+//		}
+//		i++;
+//		j = 0;
+//	}
+//}
+
 int		main(int argc, char **argv)
 {
-	char	*str;
 	char	**tbl;
+	char	*str;
 
-	str = NULL;
 	tbl = NULL;
+	str = NULL;
 	if (argc != 2)
 	{
 		if (argc == 1)
@@ -27,24 +46,19 @@ int		main(int argc, char **argv)
 			ft_putstr("Too Many Files\n");
 		return (0);
 	}
-	if (ft_strequ(str = ft_open_file(argv[1]), "ERROR") == 1)
+	if ((ft_strequ((str = open_file(argv[1])), "ERROR") == 1))
 	{
-		ft_putstr("Error");
+		ft_putendl("Error");
 		return (0);
 	}
 	tbl = first_split(str);
-	if ((ft_strequ(*tbl, "ERROR")) == 1)
-	{
-		ft_putstr("Error");
-		return (0);
-	}
-//	else
+	final_split(tbl);
+//	if ((ft_strequ(*tbl, "ERROR")) == 1)
 //	{
-//		while (*tbl)
-//		{
-//			ft_putstr(*tbl);
-//			tbl++;
-//		}
+//		ft_putstr("Error");
+//		return (0);
 //	}
+//	else
+//		printtbl(tbl);
 	return (0);
 }

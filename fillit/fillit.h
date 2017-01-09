@@ -14,13 +14,14 @@
 
 //typedef struct		s_list
 //{
-//	struct s_list	*prev;
 //	char			**tetri;
+//	struct s_list	*prev;
 //	struct s_list	*next;
 //}					t_list
 
-char	*ft_open_file(char *str);
-int		main(int argc, char **argv);
+char	*open_file(char *str);
+int	main(int argc, char **argv);
 char	**first_split(char *str);
+char	***final_split(char **tbl);
 
 #endif

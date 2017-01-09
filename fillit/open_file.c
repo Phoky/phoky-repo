@@ -30,7 +30,7 @@ int		ft_check_error(char *str)
 	return (1);
 }
 
-char	*ft_open_file(char *str)
+char	*open_file(char *str)
 {
 	int		fd;
 	int		ret;

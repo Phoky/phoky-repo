@@ -3,14 +3,25 @@
 int		check_tbl(char **tbl)
 {
 	int	i;
+	int	j;
+	char	c;
 
 	i = 0;
+	j = 0;
+	c = 'A';
 	while(tbl[i])
 	{
 		if (tbl[i][0] == '\n')
 			return (0);
-		ft_putstr(tbl[i]);
+		while (tbl[i][j])
+		{
+			if (tbl[i][j] == '#')
+				tbl[i][j] = c;
+			j++;
+		}
 		i++;
+		j = 0;
+		c++;
 	}
 	return (1);
 }
