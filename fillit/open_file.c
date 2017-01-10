@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_file.c                                     :+:      :+:    :+:   */
+/*   open_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/04 15:40:09 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/01/04 15:40:13 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/01/06 18:02:00 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/01/06 18:02:01 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_check_error(char *str)
+int		check_error(char *str)
 {
 	int		i;
 
@@ -50,7 +50,7 @@ char	*open_file(char *str)
 		buf[ret] = '\0';
 		sf = ft_strjoin(sf, buf);
 	}
-	if (ft_check_error(sf) == 0)
+	if (check_error(sf) == 0)
 		return ("ERROR");
 	else
 		return (sf);

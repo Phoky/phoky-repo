@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   first_split.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/06 13:52:54 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/01/06 13:52:56 by rcolleau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		check_tbl(char **tbl)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	c;
 
 	i = 0;
 	j = 0;
-	c = 'A';
-	while(tbl[i])
+	c = 65;
+	while (tbl[i])
 	{
 		if (tbl[i][0] == '\n')
 			return (0);
@@ -19,9 +31,9 @@ int		check_tbl(char **tbl)
 				tbl[i][j] = c;
 			j++;
 		}
-		i++;
 		j = 0;
 		c++;
+		i++;
 	}
 	return (1);
 }
@@ -37,12 +49,14 @@ char	**first_split(char *str)
 	tbl = NULL;
 	while (str[i] != '\0')
 	{
-		 if (i == r && str[i] == '\n')
-		 {
-		 	str[i] = '1';
-		 	r += 21;
-		 }
-		 i++;
+		if (i == r)
+		{
+			if (str[i] != '\n')
+				return (tbl = ft_strsplit("ERROR", '1'));
+			str[i] = '1';
+			r += 21;
+		}
+		i++;
 	}
 	tbl = ft_strsplit(str, '1');
 	if (check_tbl(tbl) == 0)
