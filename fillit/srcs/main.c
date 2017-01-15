@@ -6,75 +6,59 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:40:29 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/01/10 17:36:17 by rcolleau         ###   ########.fr       */
+/*   Updated: 2017/01/14 16:25:49 by cbouvell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		dtbllen(char ***tbl)
+static int	check_arg(int argc)
+{
+	if (argc == 1)
+		ft_putendl("Missing File");
+	else if (argc == 0)
+		ft_putendl("Error");
+	else
+		ft_putendl("Too Many Files");
+	return (0);
+}
+
+static int	check_t(char ***tbl)
 {
 	int	i;
 
 	i = 0;
-	while (*tbl)
+	while (tbl[i])
 	{
-		i++;
-		tbl++;
-	}
-	return (i);
-}
-
-void	printtbl(char ***tbl)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < dtbllen(tbl))
-	{
-		while (tbl[i][j])
-		{
-			ft_putstr(tbl[i][j]);
-			j++;
-		}
-		j = 0;
+		if ((chk_tetri(tbl[i])) == 0)
+			return (0);
 		i++;
 	}
+	return (1);
 }
 
-void	affichetbl(char **tbl)
-{
-	while(*tbl)
-	{
-		ft_putstr(*tbl);
-		tbl++;
-	}
-}
-
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	char	**tbl;
 	char	***tf;
+	char	**pzl;
+	int		i;
 
 	tbl = NULL;
 	tf = NULL;
+	pzl = NULL;
+	i = 0;
 	if (argc != 2)
-	{
-		if (argc == 1)
-			ft_putendl("Missing File");
-		else
-			ft_putendl("Too Many Files");
-		return (0);
-	}
+		return (check_arg(argc));
 	tbl = first_split(open_file(argv[1]));
 	if ((ft_strequ(*tbl, "ERROR")) == 1)
-	{
-		ft_putendl("Error");
-		return (0);
-	}
+		return (check_arg(0));
 	tf = final_split(tbl);
-	printtbl(tf);
+	if ((check_t(tf)) == 0)
+		return (check_arg(0));
+	while (tf[i])
+		mv_tetra(tf[i++]);
+	pzl = mk_all(tf);
+	ft_puttab(pzl);
 	return (0);
 }

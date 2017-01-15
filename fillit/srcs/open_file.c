@@ -6,13 +6,13 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 18:02:00 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/01/06 18:02:01 by rcolleau         ###   ########.fr       */
+/*   Updated: 2017/01/13 12:57:04 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		check_error(char *str)
+static int	check_error(char *str)
 {
 	int		i;
 
@@ -30,7 +30,7 @@ int		check_error(char *str)
 	return (1);
 }
 
-char	*open_file(char *str)
+char		*open_file(char *str)
 {
 	int		fd;
 	int		ret;
@@ -41,7 +41,7 @@ char	*open_file(char *str)
 	if (fd == -1)
 	{
 		ft_putstr("read error\n");
-		return (0);
+		return ("ERROR");
 	}
 	if ((sf = ft_memalloc(BUF_SIZE + 1)) == NULL)
 		return (NULL);

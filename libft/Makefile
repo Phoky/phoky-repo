@@ -81,7 +81,9 @@ SRCS =	ft_memset.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 		ft_lstadd_end.c \
-
+		ft_tbllen.c \
+		ft_tritbllen.c \
+		
 INC = libft.h
 
 OBJS = $(SRCS:.c=.o)
