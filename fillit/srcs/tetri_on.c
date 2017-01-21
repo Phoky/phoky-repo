@@ -6,7 +6,7 @@
 /*   By: cbouvell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 16:53:28 by cbouvell          #+#    #+#             */
-/*   Updated: 2017/01/13 15:36:37 by rcolleau         ###   ########.fr       */
+/*   Updated: 2017/01/16 16:13:11 by cbouvell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	tetri_on(char **tab, char **tetri, int li, int col)
 		while (tetri[j])
 		{
 			if (tetri[i][j] != '.')
+			{
 				tab[i + li][j + col] = tetri[i][j];
+			}
 			j++;
 		}
 		i++;

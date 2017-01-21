@@ -6,7 +6,7 @@
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:53:08 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/01/14 17:53:33 by cbouvell         ###   ########.fr       */
+/*   Updated: 2017/01/16 16:13:18 by cbouvell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-# include <stdio.h>
 
 # define BUF_SIZE 39
 
@@ -36,7 +35,7 @@ void	swap_tetri(char ***tetri, int n);
 void	tetri_off(char **tab, char **tetri, int li, int col);
 char	**mv_tetra(char **tetra);
 char	**crea_tab(int size);
-char	**mk_all(char ***tetri);
-int		bck_trck(char **tetra, char **tab, int i, int j);
+char	**mk_all(char ***tetri, int sz_min);
+int		bck_trck(char ***tetra, char **tab, int j);
 
 #endif

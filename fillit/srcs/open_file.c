@@ -27,6 +27,8 @@ static int	check_error(char *str)
 	}
 	if (i < 20 || i > 546)
 		return (0);
+	if (str[i - 2] == '\n' || str[i - 1] != '\n')
+		return (0);
 	return (1);
 }
 
