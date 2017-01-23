@@ -50,7 +50,9 @@ char		*open_file(char *str)
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		buf[ret] = '\0';
-		sf = ft_strjoin(sf, buf);
+		sf = ft_strjoin_free(sf, buf);
+		if (ft_strlen(sf) > 546)
+			return ("ERROR");
 	}
 	if (check_error(sf) == 0)
 		return ("ERROR");

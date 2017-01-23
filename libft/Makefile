@@ -53,6 +53,7 @@ SRCS =	ft_memset.c \
 		ft_strnequ.c \
 		ft_strsub.c \
 		ft_strjoin.c \
+		ft_strjoin_free.c \
 		ft_strtrim.c \
 		ft_strsplit.c \
 		ft_itoa.c \
@@ -66,7 +67,7 @@ SRCS =	ft_memset.c \
 		ft_putnbr_fd.c \
 		ft_strrev.c \
 		ft_nblen.c \
-		ft_part.c \
+		ft_intchr.c \
 		ft_ptr.c \
 		ft_abs.c \
 		ft_foreach.c \
@@ -93,15 +94,15 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(OBJS):
-	gcc $(FLAGS) -c $(SRCS) -I $(INC)
+	@gcc $(FLAGS) -c $(SRCS) -I $(INC)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 clean:
-	/bin/rm -f $(OBJS)
+	@/bin/rm -f $(OBJS)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
