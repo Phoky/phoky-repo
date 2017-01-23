@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/30 17:03:18 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/12 14:30:01 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/01/23 11:44:48 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/01/23 11:44:51 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,12 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	char	*new;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	i = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * i);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[j] != '\0')
-		str[i++] = ((char *)s1)[j++];
-	j = 0;
-	while (s2[j] != '\0')
-		str[i++] = ((char *)s2)[j++];
-	str[i] = '\0';
-	return (str);
+	if (!s1 || !s2 || !(new = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (0);
+	ft_strcat(new, s1);
+	ft_strcat(new, s2);
+	new[ft_strlen(new)] = '\0';
+	return (new);
 }
