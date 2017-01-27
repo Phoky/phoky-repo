@@ -4,6 +4,9 @@ This project goal is to create the smallest square as possible with tetriminos p
 
 How to use fillit :
 
+If you have cloned the all repository, use the command 'cp -R ../libft .'
+Otherwise, import one of the 42 student's libft in the directory
+
 Do the command "make" to create the executable and the tetriminos file
 
 fill the file "tetriminos" with tetrimino pieces designed with some '#'

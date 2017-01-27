@@ -21,7 +21,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# define BUF_SIZE 39
+//# define BUF_SIZE 39
 
 int		main(int argc, char **argv);
 char	*open_file(char *str);
