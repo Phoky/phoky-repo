@@ -40,6 +40,9 @@ OBJS_NAME = $(addprefix $(OBJS_PATH), $(OBJS))
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
+	@touch tetriminos
+	@echo "The executable 'fillit' is now created"
+	@echo "Don't forget to put some tetriminos is the file ;)"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir objs 2> /dev/null || echo "" > /dev/null
@@ -48,7 +51,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 $(NAME): $(OBJS_NAME)
 	@make -C libft/
 	@make clean -C libft/ 
-	gcc -o $@ -I $(SRCS_PATH)$(INC) $(OBJS_NAME) libft/libft.a 
+	@gcc -o $@ -I $(SRCS_PATH)$(INC) $(OBJS_NAME) libft/libft.a 
 
 clean:
 	@/bin/rm -rf objs
@@ -56,5 +59,6 @@ clean:
 fclean: clean
 	@make fclean -C libft
 	@/bin/rm -f $(NAME)
+	@/bin/rm tetriminos
 
 re: fclean all
