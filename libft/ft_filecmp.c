@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_filecmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/27 12:41:57 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/01/27 12:42:00 by rcolleau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char		*open_file(char *str)
@@ -23,7 +35,7 @@ static char		*open_file(char *str)
 	return (sf);
 }
 
-int		ft_filecmp(char *arg1, char *arg2)
+int				ft_filecmp(char *arg1, char *arg2)
 {
 	char *s;
 	char *s1;
