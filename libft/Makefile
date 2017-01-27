@@ -84,6 +84,7 @@ SRCS =	ft_memset.c \
 		ft_lstadd_end.c \
 		ft_tbllen.c \
 		ft_tritbllen.c \
+		ft_filecmp.c \
 		
 INC = libft.h
 

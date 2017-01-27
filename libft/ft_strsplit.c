@@ -50,7 +50,7 @@ char			**ft_strsplit(char const *s, char c)
 			i++;
 		if (s[i] == '\0')
 			break ;
-		m = ft_part((s + i), c);
+		m = ft_intchr((s + i), c);
 		tbl[o] = ft_ptr(tbl[o], (s + i), m);
 		o++;
 		i = i + m;

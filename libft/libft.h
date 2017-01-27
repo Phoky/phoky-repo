@@ -16,7 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/uio.h>
+# include <fcntl.h>
 
+# define BUF_SIZE 42
 # define DO_SEGFAULT 1
 
 typedef struct		s_list
@@ -98,5 +103,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(f)(t_list *elem));
 void				ft_lstadd_end(t_list **alst, t_list *new);
 int					ft_tbllen(char **tbl);
 int					ft_tritbllen(char ***tbl);
+int					ft_filecmp(char *arg1, char *arg2);
 
 #endif
