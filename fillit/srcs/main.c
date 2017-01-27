@@ -38,11 +38,11 @@ static int	cherr(char ***tbl)
 static int	ft_error(int argc)
 {
 	if (argc == 1)
-		ft_putendl("Missing File");
+		ft_putendl("usage: fillit source_file");
 	else if (argc == 0)
 		ft_putendl("error");
 	else
-		ft_putendl("Too Many Files");
+		ft_putendl("usage: fillit source_file");
 	return (0);
 }
 

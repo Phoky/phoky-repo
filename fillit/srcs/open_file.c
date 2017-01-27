@@ -41,10 +41,7 @@ char		*open_file(char *str)
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putstr("read error\n");
 		return ("ERROR");
-	}
 	if ((sf = ft_memalloc(BUF_SIZE + 1)) == NULL)
 		return (NULL);
 	while ((ret = read(fd, buf, BUF_SIZE)))
