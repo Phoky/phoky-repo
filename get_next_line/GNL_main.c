@@ -9,6 +9,8 @@ int		main(int argc, char **argv)
 	int		fd;
 	char	*line;
 	int		res;
+	int		f;
+	int		c;
 
 	if (argc && argv[0])
 		res = 0;
@@ -30,13 +32,92 @@ int		main(int argc, char **argv)
 **		printf("%s\n", line);
 **	}
 */
-	fd = open("a", O_RDONLY);
-	while ((res = get_next_line(fd, &line) > 0))
-	{
-//		printf("[res = %d]\n", res);
-		printf("[line = %s]\n", line);
+	fd = open("machin.txt", O_RDONLY);
+	f = open("a", O_RDONLY);
+	c = open("texte.txt", O_RDONLY);
+	res = get_next_line(fd, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(fd);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(f, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(f);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(c, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(c);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(fd, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(fd);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(f, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(f);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(c, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(c);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(fd, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(fd);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(f, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(f);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(c, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(c);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(fd, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(fd);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(f, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(f);
+	ft_putchar('\t');
+	ft_putendl(line);
+	res = get_next_line(c, &line);
+	ft_putnbr(res);
+	ft_putchar('-');
+	ft_putnbr(c);
+	ft_putchar('\t');
+	ft_putendl(line);
+//	while ((res = get_next_line(fd, &line) > 0))
+//	{
+//		ft_putnbr(res);
+//		printf("[line = %s]\n\n", line);
+//		ft_putstr("\t");
+//		ft_putstr_fd(line, f);
+//		ft_putendl_fd("\n", f);
+//		ft_putendl(line);
+//		ft_putstr("]\n");
 //		printf("%s\n", line);
-	}
+//	}
 
 	return (0);
 }
