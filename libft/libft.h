@@ -107,5 +107,6 @@ void				ft_lstadd_end(t_list **alst, t_list *new);
 int					ft_tbllen(char **tbl);
 int					ft_tritbllen(char ***tbl);
 int					ft_filecmp(char *arg1, char *arg2);
+char				*ft_open_file(char *str);
 
 #endif

@@ -17,7 +17,7 @@ int				ft_filecmp(char *arg1, char *arg2)
 	char *s;
 	char *s1;
 
-	s = open_file(arg1);
-	s1 = open_file(arg2);
+	s = ft_open_file(arg1);
+	s1 = ft_open_file(arg2);
 	return (ft_strcmp(s, s1));
 }
