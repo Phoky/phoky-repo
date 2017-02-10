@@ -18,7 +18,7 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n)
 
 	i = 0;
 	if (s1 == NULL || s2 == NULL)
-		return ((int)NULL);
+		return (0);
 	if (n == 0 || (s1[i] == 0 && s2[i] == 0))
 		return (1);
 	while (i < n)
