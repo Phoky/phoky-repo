@@ -60,9 +60,6 @@ int		get_next_line(const int fd, char **line)
 		{
 			ft_strcpy(*line, stock[fd]);
 			ft_strclr(stock[fd]);
-			ft_putstr("[line = ");
-			ft_putstr(*line);
-			ft_putendl("]");
 			return (1);
 		}		
 		else
@@ -145,11 +142,6 @@ int		get_next_line(const int fd, char **line)
 //	ft_putstr(*line);
 //	ft_putendl("]");
 	if (ret <= 0)
-	{
-//		if (ret != 0 && **line != '\n')
-//			return (1);
-//		else
 			return (ret = 0 ? 0 : -1);
-	}
 	return (1);
 }
