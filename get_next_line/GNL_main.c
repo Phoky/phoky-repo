@@ -12,6 +12,7 @@ int		main(int argc, char **argv)
 	int		f;
 	int		c;
 
+	line = NULL;
 	if (argc && argv[0])
 		res = 0;
 /*	fd = open("texte.txt", O_RDONLY);
@@ -108,16 +109,18 @@ int		main(int argc, char **argv)
 //	ft_putchar('\t');
 //	ft_putendl(line);
 //	close(c);
-//	c = open("res", O_RDWR);
-	while ((res = get_next_line(c, &line) > 0))
+	c = open("res", O_RDWR);
+	while ((res = get_next_line(fd, &line) > 0))
 	{
-		ft_putnbr(res);
+//		ft_putnbr(res);
 //		printf("[line = %s]\n\n", line);
-		ft_putstr("\t");
-//		ft_putstr_fd(line, c);
+//		ft_putstr("\t");
+		ft_putendl_fd(line, c);
 //		ft_putendl_fd("\n", f);
-		ft_putendl(line);
+//		ft_putendl(line);
+//		ft_putstr("  \t");
 //		ft_putstr("]\n");
+//		sleep(1);
 //		printf("%s\n", line);
 	}
 	return (0);
