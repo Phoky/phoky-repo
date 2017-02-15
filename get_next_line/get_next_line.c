@@ -24,58 +24,57 @@ t_list	*lstfind_link(const t_list *lst, int mys)
 	return (find_me);
 }
 
+int		fill_buf_w_cont(char **content, char **buf)
+{
+	int	i;
+
+	i = 0;
+	if ((i = ft_intchr(*content, '\n')) < (int)strlen(*content))
+	{
+		if (i == 0)
+			i++;
+//		ft_putstr("[content = ");
+//		ft_putstr(*content);
+//		ft_putstr("]\n");
+		ft_strncpy(*buf, *content, i);
+		*content = (*content + i);
+		return (1);
+	}
+	else
+	{
+		ft_strcpy(*buf, *content);
+		ft_strclr(*content);
+		return (2);
+	}
+	return (0);
+}
+
 int		for_read(const int fd, char **content, char **buf, int ret)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
-	tmp = ft_memalloc(BUFF_SIZE);
-	if (*content)
-		ft_strcpy(tmp, *content);
-		ft_strclr(*content);
-	while ((ret = read(fd, *buf, BUFF_SIZE)) > 0)
+	if ((strlen(*content)) && (i = fill_buf_w_cont(&*content, &*buf)))
+		if (i <= 1)
+			return (i == 1 ? 1 : 0);
+	tmp = ft_memalloc(BUFF_SIZE + 1);
+	while ((ret = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
-		(*buf)[ret] = '\0';
-		if ((i = ft_intchr(*buf, '\n')) < ret)
+		tmp[ret] = '\0';
+		if ((i = ft_intchr(tmp, '\n')) < ret)
 		{
-			tmp = ft_strnjoin(tmp, *buf, i);
+			tmp[i] = '\0';
+			*buf = ft_strnjoin(*buf, tmp, i);
 			break ;
 		}
 		else
-			tmp = ft_strjoin(tmp, *buf);
+			*buf = ft_strjoin_free(*buf, tmp);
 	}
-	if (ret <= 0)
-		return (ret == 0 ? 0 : -1);
-	*content = ft_strjoin(*content, (*buf + (i + 1)));
-	free(*buf);
-	*buf = ft_strdup(tmp);
+	*content = ft_strjoin(*content, (tmp + (i + 1)));
 	free(tmp);
-	return (1);
-}
-
-int		fill_line(char **line, char **buf, char **content)
-{
-	int	i;
-
-	i = 0;
-//	ft_putstr("[content = ");
-//	ft_putstr(*content);
-//	ft_putstr("]\n");
-	if (*buf)
-	{
-		if (!(*line = ft_strdup(*buf)))
-			return (-1);
-		ft_strdel(buf);
-	}
-	else
-	{
-		i = ft_intchr(*content, '\n');
-		*content[i] = '\0';
-		if (!(*line = ft_strndup(*content, i)))
-			return (-1);
-	}
-	*content = (*content + i);
+	if (ret <= 0 && !(ft_strlen(*buf)))
+		return (ret == 0 ? 0 : -1);
 	return (1);
 }
 
@@ -86,7 +85,6 @@ int		get_next_line(const int fd, char **line)
 	char			*buf;
 	int				ret;
 
-	ret = 0;
 	if (!fd || fd <= 0)
 		return (-1);
 	if (line && *line)
@@ -99,17 +97,12 @@ int		get_next_line(const int fd, char **line)
 		ft_lstadd(&stock, new);
 	}
 	buf = ft_memalloc(BUFF_SIZE + 1);
-	if ((ret = for_read(fd, (char **)&new->content, &buf, ret)) == -1)
-		return (-1);
-//	ft_putstr("[content = ");
-//	ft_putstr((char *)new->content);
-//	ft_putstr("]\n");
-	if (fill_line(&*line, &buf, (char **)&new->content) != 1)
-		return (-1);
-//	ft_putstr("[content_end = ");
-//	ft_putstr(new->content);	
-//	ft_putstr("]\n");
-	if ((ret == 0) && (new->content))
-		return (0);
+	ret = for_read(fd, (char **)&new->content, &buf, 0);
+	if ((ret <= 0))
+		return (ret == 0 ? 0 : -1);
+	*line = ft_strdup(buf);
+	free(buf);
+	if (**line == '\n')
+		ft_strclr(*line);
 	return (1);
 }

@@ -113,11 +113,13 @@ int		main(int argc, char **argv)
 	while ((res = get_next_line(fd, &line) > 0))
 	{
 //		ft_putnbr(res);
+//		ft_putchar(' ');
+//		ft_putnbr(ft_strlen(line));
 //		printf("[line = %s]\n\n", line);
 //		ft_putstr("\t");
-		ft_putendl_fd(line, c);
+//		ft_putendl_fd(line, c);
 //		ft_putendl_fd("\n", f);
-//		ft_putendl(line);
+		ft_putendl(line);
 //		ft_putstr("  \t");
 //		ft_putstr("]\n");
 //		sleep(1);
