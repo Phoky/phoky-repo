@@ -28,14 +28,12 @@ int		fill_buf_w_cont(char **content, char **buf)
 {
 	int	i;
 
-	i = 0;
-	if ((i = ft_intchr(*content, '\n')) < (int)strlen(*content))
+	i = ft_intchr(*content, '\n');
+	if (i < (int)ft_strlen(*content))
 	{
+		*content[i] = '\0';
 		if (i == 0)
 			i++;
-//		ft_putstr("[content = ");
-//		ft_putstr(*content);
-//		ft_putstr("]\n");
 		ft_strncpy(*buf, *content, i);
 		*content = (*content + i);
 		return (1);
@@ -55,7 +53,7 @@ int		for_read(const int fd, char **content, char **buf, int ret)
 	char	*tmp;
 
 	i = 0;
-	if ((strlen(*content)) && (i = fill_buf_w_cont(&*content, &*buf)))
+	if ((ft_strlen(*content)) && (i = fill_buf_w_cont(&*content, &*buf)))
 		if (i <= 1)
 			return (i == 1 ? 1 : 0);
 	tmp = ft_memalloc(BUFF_SIZE + 1);
