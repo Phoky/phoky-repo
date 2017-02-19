@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define BUFF_SIZE 12
+# define BUFF_SIZE 46453
 
 int		get_next_line(const int fd, char **line);
 
