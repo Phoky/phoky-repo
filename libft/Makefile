@@ -89,6 +89,8 @@ SRCS =	ft_memset.c \
 		ft_tritbllen.c \
 		ft_filecmp.c \
 		ft_open_file.c \
+		ft_lstfind_link.c \
+		ft_count_char.c \
 		
 INC = libft.h
 
@@ -111,3 +113,5 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

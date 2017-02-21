@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
+/*   ft_lstfind_link.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 16:22:27 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/01/23 16:22:29 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/02/14 15:45:36 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/02/14 15:45:37 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_free(char *s1, char const *s2)
+t_list	*ft_lstfind_link(const t_list *lst, int n)
 {
-	char	*s_end;
-	int		i;
-	int		j;
+	t_list	*find_me;
 
-	if (!s1 || !s2)
+	if (!lst)
 		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	if (!(s_end = (char *)malloc(sizeof(char) * (i + j + 1))))
-		return (NULL);
-	*(s_end + i + j) = '\0';
-	while (j--)
-		*(s_end + i + j) = *(s2 + j);
-	while (i--)
-		*(s_end + i) = *(s1 + i);
-	ft_strdel(&s1);
-	return (s_end);
+	find_me = (t_list *)lst;
+	while (find_me && (int)find_me->content_size != n)
+		find_me = find_me->next;
+	return (find_me);
 }

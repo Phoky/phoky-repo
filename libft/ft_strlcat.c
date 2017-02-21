@@ -3,35 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tdumouli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/30 18:10:47 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/01 18:54:31 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/11/08 15:44:34 by tdumouli          #+#    #+#             */
+/*   Updated: 2016/11/09 04:29:47 by tdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t s)
 {
-	size_t	i;
-	size_t	j;
+	size_t		end_dest;
+	size_t		length;
 
-	i = 0;
-	if (size == 0)
-	{
-		dst = (char *)src;
-		return (ft_strlen(src));
-	}
-	while (dst[i] && i < size)
-		i++;
-	j = i;
-	while (src[i - j] && i < size - 1)
-	{
-		dst[i] = src[i - j];
-		i++;
-	}
-	if (j < size)
-		dst[i] = '\0';
-	return (j + ft_strlen(src));
+	length = ft_strlen(src);
+	end_dest = ft_strlen(dst);
+	if (s <= end_dest)
+		return (length + s);
+	if (s > end_dest + length)
+		s = end_dest + length + 1;
+	*(dst + --s) = '\0';
+	while (s-- != end_dest)
+		*(dst + s) = *(src + s - end_dest);
+	return (length + end_dest);
 }

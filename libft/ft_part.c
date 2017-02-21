@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
+/*   ft_part.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 16:22:27 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/01/23 16:22:29 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/12/07 09:11:31 by rcolleau          #+#    #+#             */
+/*   Updated: 2016/12/07 13:12:14 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_free(char *s1, char const *s2)
+int		ft_part(const char *str, int c)
 {
-	char	*s_end;
-	int		i;
-	int		j;
+	int i;
 
-	if (!s1 || !s2)
-		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	if (!(s_end = (char *)malloc(sizeof(char) * (i + j + 1))))
-		return (NULL);
-	*(s_end + i + j) = '\0';
-	while (j--)
-		*(s_end + i + j) = *(s2 + j);
-	while (i--)
-		*(s_end + i) = *(s1 + i);
-	ft_strdel(&s1);
-	return (s_end);
+	i = 0;
+	while (str[i] != c && str[i] != '\0')
+		i++;
+	return (i);
 }

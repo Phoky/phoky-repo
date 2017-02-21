@@ -3,26 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tdumouli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/30 18:08:31 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/01 17:10:51 by rcolleau         ###   ########.fr       */
+/*   Created: 2016/11/07 03:07:50 by tdumouli          #+#    #+#             */
+/*   Updated: 2016/11/09 04:09:56 by tdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+char		*ft_strncat(char *restrict dest, const char *restrict src, size_t n)
 {
-	size_t	j;
-	size_t	i;
+	size_t		i;
+	size_t		end_dest;
+	size_t		length;
 
-	j = 0;
-	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (j < n && s2[j] != '\0')
-		s1[i++] = ((char *)s2)[j++];
-	s1[i] = '\0';
-	return (s1);
+	length = ft_strlen(src);
+	end_dest = ft_strlen(dest);
+	i = -1;
+	while (++i < length && i < n)
+		*(dest + i + end_dest) = *(src + i);
+	*(dest + i + end_dest) = '\0';
+	return (dest);
 }

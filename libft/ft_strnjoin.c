@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/04 17:46:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/02/04 17:46:15 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/01/09 17:46:10 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/02/04 16:12:15 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 char	*ft_strnjoin(char const *s1, char const *s2, size_t len)
 {
-	char	*new;
+	char	*s_end;
+	int		i;
 
-	if (!s1 || !s2 || !(new = ft_strnew(ft_strlen(s1) + (len + 1))))
-		return (0);
-	ft_strcat(new, s1);
-	ft_strncat(new, s2, len);
-	new[ft_strlen(new)] = '\0';
-	return (new);
+	if (!s1 || !s2)
+		return (NULL);
+	i = ft_strlen(s1);
+	if (!(s_end = (char *)malloc(sizeof(char) * (i + len + 1))))
+		return (NULL);
+	*(s_end + i + len) = '\0';
+	while (len--)
+		*(s_end + i + len) = *(s2 + len);
+	while (i--)
+		*(s_end + i) = *(s1 + i);
+	return (s_end);
 }
