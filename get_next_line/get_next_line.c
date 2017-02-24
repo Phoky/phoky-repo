@@ -12,15 +12,6 @@
 
 #include "get_next_line.h"
 
-void	ft_delete_link(void *content, size_t content_size)
-{
-	if (content && content_size)
-	{
-		free(content);
-		content = NULL;
-	}
-}
-
 t_list	*lstfind_link(const t_list *lst, int mys)
 {
 	t_list	*find_me;
