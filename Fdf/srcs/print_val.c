@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   print_val.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 11:31:50 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/08 17:45:42 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/04/02 10:49:27 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/04/02 10:49:30 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	ft_putchar(char c)
+void	print_val(t_val *chain)
 {
-	if (!c)
-		write(1, "(null)", 6);
-	write(1, &c, 1);
+	t_val	*t;
+
+	t = chain;
+	while (t)
+	{
+		ft_putstr("[Value = ");
+		ft_putnbr(t->value);
+		ft_putendl("]");
+		ft_putstr("[x = ");
+		ft_putnbr(t->x);
+		ft_putendl("]");
+		ft_putstr("[y = ");
+		ft_putnbr(t->y);
+		ft_putendl("]");
+		if (t->color != NULL)
+		{
+			ft_putstr("[color = ");
+			ft_putstr(t->color);
+			ft_putendl("]");
+		}
+		t = t->next;
+	}
 }

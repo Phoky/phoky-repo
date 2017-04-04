@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   new_val.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 11:31:50 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/08 17:45:42 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/04/02 10:49:22 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/04/02 10:49:24 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	ft_putchar(char c)
+t_val	*new_val(char *color)
 {
-	if (!c)
-		write(1, "(null)", 6);
-	write(1, &c, 1);
+	t_val	*new;
+
+	if ((new = (t_val *)malloc(sizeof(t_val))) == NULL)
+		return (NULL);
+	if (color == NULL)
+		new->color = NULL;
+	else
+	{
+		new->color = ft_strdup(color);
+		free(color);
+	}
+	new->next = NULL;
+	return (new);
 }

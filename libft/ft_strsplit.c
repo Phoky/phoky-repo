@@ -56,5 +56,6 @@ char			**ft_strsplit(char const *s, char c)
 		i = i + m;
 	}
 	tbl[o] = NULL;
+	free((void *)s);
 	return (tbl);
 }

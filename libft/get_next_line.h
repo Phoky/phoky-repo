@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 11:31:50 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/08 17:45:42 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/02/13 12:33:02 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/02/13 12:33:04 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef _GET_NEXT_LINE_H
+# define _GET_NEXT_LINE_H
 
-void	ft_putchar(char c)
-{
-	if (!c)
-		write(1, "(null)", 6);
-	write(1, &c, 1);
-}
+# include "libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+
+# define BUFF_SIZE 42
+
+int		get_next_line(const int fd, char **line);
+
+#endif

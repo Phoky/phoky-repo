@@ -14,5 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	if (!c)
+		write(fd, "(null)", 6);
 	write(fd, &c, 1);
 }

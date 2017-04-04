@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_intmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 11:31:50 by rcolleau          #+#    #+#             */
-/*   Updated: 2016/12/08 17:45:42 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/03/03 09:35:31 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/03/03 09:35:38 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int		*ft_intmap(char *str, int c)
 {
-	if (!c)
-		write(1, "(null)", 6);
-	write(1, &c, 1);
+	int		*tbl;
+	char	**split;
+	int		i;
+
+	i = 0;
+	split = ft_strsplit(str, c);
+	tbl = (int *)malloc(sizeof(int) * ft_tbllen(split));
+	if (str == NULL)
+		return (0);
+	while (*split)
+	{
+		tbl[i] = ft_atoi(*split);
+		i++;
+		split++;
+	}
+	return (tbl);
 }

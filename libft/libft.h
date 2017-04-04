@@ -31,6 +31,10 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+/*
+**		1ST PART -- LIBC (28 functions)
+*/
+
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -40,7 +44,6 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
-char				*ft_strndup(const char *s1, size_t len);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strcat(char *s1, const char *s2);
@@ -60,6 +63,11 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+
+/*
+**		2ND PART -- LIB42 (24 functions)
+*/
+
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
@@ -73,9 +81,6 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strjoin_free(char *s1, char const *s2);
-char				*ft_strnjoin_free(char *s1, char const *s2, size_t len);
-char				*ft_strnjoin(char const *s1, char const *s2, size_t len);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
@@ -87,22 +92,41 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-char				*ft_strrev(char *str);
-int					ft_nblen(int n);
-int					ft_intchr(const char *str, int c);
-char				*ft_ptr(char *dest, const char *src, size_t n);
-int					ft_abs(int n);
-void				ft_foreach(int *tab, int length, void (*f)(int));
-int					*ft_range(int min, int max);
-int					ft_recursive_factorial(int nb);
-int					ft_sqrt(int nb);
-void				ft_swap(int *a, int *b);
+
+/*
+**		3RD PART -- SUBJECT BONUS (6 functions)
+*/
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(f)(t_list *elem));
+
+/*
+**		4TH PART -- POOL FONCTIONS (6 functions)
+*/
+
+int					ft_abs(int n);
+void				ft_foreach(int *tab, int length, void (*f)(int));
+int					*ft_range(int min, int max);
+int					ft_recursive_factorial(int nb);
+int					ft_sqrt(int nb);
+void				ft_swap(int *a, int *b);
+
+/*
+**		5TH PART -- PERSONNALS FONCTIONS (20 functions)
+*/
+
+char				*ft_strndup(const char *s1, size_t len);
+char				*ft_strnjoin(char const *s1, char const *s2, size_t len);
+char				*ft_strjoin_free(char *s1, char const *s2);
+char				*ft_strnjoin_free(char *s1, char const *s2, size_t len);
+char				*ft_strrev(char *str);
+int					ft_nblen(int n);
+int					ft_intchr(const char *str, int c);
+char				*ft_ptr(char *dest, const char *src, size_t n);
 t_list				*ft_lstfind_link(const t_list *lst, int n);
 void				ft_lstadd_end(t_list **alst, t_list *new);
 int					ft_tbllen(char **tbl);
@@ -110,5 +134,13 @@ int					ft_tritbllen(char ***tbl);
 int					ft_filecmp(char *arg1, char *arg2);
 char				*ft_open_file(char *str);
 int					ft_count_char(char *str, int c);
+int					get_next_line(int fd, char **line);
+void				ft_putnbrendl(int n);
+void				ft_putnbrendl_fr(int n, int fd);
+void				ft_puttbl(char **tbl);
+int					*ft_intmap(char *str, int c);
+int					error_func(char *s);
+int					error_func_i(char *s, int i);
+void				ft_lstprint(t_list *alst);
 
 #endif

@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_file.c                                     :+:      :+:    :+:   */
+/*   read_and_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/13 12:35:10 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/03/29 18:07:46 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/04/02 10:49:35 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/04/02 10:49:41 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-char		*ft_open_file(char *str)
+t_list	*read_and_fill(t_list *chain, char *argv)
 {
+	t_list	*new;
 	int		fd;
 	int		ret;
-	char	buf[BUF_SIZE + 1];
-	char	*sf;
+	char	*s;
 
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
+	fd = open(argv, O_RDONLY);
+	while ((ret = get_next_line(fd, &s)) > 0)
 	{
-		ft_putstr("read error\n");
-		return ("ERROR");
+		if (*s == '\0')
+			return (NULL);
+		if ((new = (t_list *)malloc(sizeof(t_list))) == NULL)
+			return (NULL);
+		new->content = ft_strsplit(s, ' ');
+		new->content_size = ft_tbllen(new->content);
+		ft_lstadd_end(&chain, new);
+		new = new->next;
 	}
-	if ((sf = ft_memalloc(BUF_SIZE + 1)) == NULL)
+	if (ret == -1)
 		return (NULL);
-	while ((ret = read(fd, buf, BUF_SIZE)))
-	{
-		ft_putendl(buf);
-		buf[ret] = '\0';
-		sf = ft_strjoin_free(sf, buf);
-	}
-	return (sf);
+	close(fd);
+	return (chain);
 }

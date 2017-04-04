@@ -91,8 +91,17 @@ SRCS =	ft_memset.c \
 		ft_open_file.c \
 		ft_lstfind_link.c \
 		ft_count_char.c \
-		
-INC = libft.h
+		get_next_line.c \
+		ft_putnbrendl.c \
+		ft_putnbrendl_fd.c \
+		ft_puttbl.c \
+		ft_intmap.c \
+		error_func.c \
+		error_func_i.c \
+		ft_lstprint.c \
+
+INC = 	libft.h \
+		get_next_line.h \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -101,7 +110,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(OBJS):
-	@gcc $(FLAGS) -c $(SRCS) -I $(INC)
+	@gcc $(FLAGS) -c $(SRCS)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
