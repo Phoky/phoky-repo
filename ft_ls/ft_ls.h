@@ -11,6 +11,19 @@ typedef struct		s_bla
 	struct s_bla	*next;
 }					t_bla;
 
+typedef struct 		s_arg
+{
+	int				l;
+	int				upper_r;
+	int				lower_r;
+	int				upper_a;
+	int				lower_a;
+	int				t;
+	int				upper_g;
+	int				u;
+	int				upper_F;
+}					t_arg;
+
 int				main(int argc, char **argv);
 
 #endif
