@@ -114,8 +114,11 @@ void	get_dir(char **argv, t_arg *opt)
 		while (j < i)
 		{
 			dir = op_dir(argv[j]);
+			ft_putstr(argv[j]);
+			ft_putendl(":");
 			print_dir(dir, opt);
 			j++;
+			ft_putchar('\n');
 		}
 	}
 }
