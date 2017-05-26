@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_ls.h"
 
 void	fill_arg(char c, t_arg **arg)
@@ -44,7 +43,7 @@ char	*get_arg(char **tbl, t_arg *arg)
 	while (tbl[i] && tbl[i][0] == '-')
 	{
 		if (!tbl[i][1])
-			return (NULL);
+			break ;
 		i++;
 	}
 	list_arg = ft_memalloc(1);
@@ -58,20 +57,4 @@ char	*get_arg(char **tbl, t_arg *arg)
 		fill_arg(list_arg[j], &arg);
 	}
 	return (NULL);
-}
-
-int		main(int argc, char **argv)
-{
-	t_arg			a;
-	char			*ill_arg;
-
-	if (argc)
-		a = (t_arg){0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	if ((ill_arg = get_arg(argv + 1, &a)) != NULL)
-	{
-		ft_putstr("ls: illegal option -- ");
-		ft_putendl(ft_strsub(ill_arg, 0, 1));
-		return (error_func("usage: ls [-AFGRUaflrtu1] [file ...]"));
-	}
-	return (0);
 }
