@@ -12,7 +12,67 @@
 
 #include "ft_ls.h"
 
-int		main(int argc, char **argv)
+static int		check_dash(char **tbl)
+{
+	int	i;
+
+	i = 1;
+	while (tbl[i][0] == '-')
+	{
+		i++;
+		if (!tbl[i])
+			break ;
+	}
+	return (i);
+}
+
+char			**removing_wrong_line(char **tbl, int i)
+{
+	int		j;
+	int		x;
+	char	**t;
+
+	j = -1;
+	x = ft_tbllen(tbl);
+	t = (char **)malloc(sizeof(char *) * x - 1);
+	t[x - 1] = NULL;
+	while (++j < i)
+		t[j] = ft_strdup(tbl[j]);
+	while (++i < x)
+		t[j++] = ft_strdup(tbl[i]);
+	return (t);
+}
+
+static char		**check_regular_file(char **arg)
+{
+	int				i;
+	struct stat		inf;
+
+	i = 0;
+	if (ft_tbllen(arg) <= 1)
+		return (arg);
+	while (arg[i])
+	{
+		if (stat(arg[i], &inf) == -1)
+		{
+			ft_put_two_arg("ls: ", arg[i], 0);
+			ft_putendl(": No such file or directory");
+			arg = removing_wrong_line(arg, i);
+			i = 0;
+		}
+		else
+			i++;
+	}
+	if (*arg)
+	{
+		ft_sort_tbl(&arg);
+		return (arg);
+	}
+	else
+		exit(0);
+}
+
+int				main(int argc, char **argv)
 {
 	t_arg			a;
 	char			*ill_arg;
@@ -26,14 +86,8 @@ int		main(int argc, char **argv)
 			exit_func(1, ft_strsub(ill_arg, 0, 1));
 	}
 	if (argc > 1)
-	{
-		while (argv[i][0] == '-')
-		{
-			i++;
-			if (!argv[i])
-				break ;
-		}
-	}
-	get_dir(argv + i, &a);
+		i = check_dash(argv);
+	argv = check_regular_file(argv + i);
+	get_dir(argv, &a);
 	return (0);
 }

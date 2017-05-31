@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-int		lstlen(t_bla *b)
+int		lstlen(t_dir *b)
 {
 	int	i;
 
@@ -39,9 +39,9 @@ int		hide_file_nbr(char **tbl)
 	return (i);
 }
 
-void	print_dir(t_bla *b, t_arg *opt)
+void	print_dir(t_dir *b, t_arg *opt)
 {
-	t_bla	*tmp;
+	t_dir	*tmp;
 	int		i;
 	char	**tbl;
 

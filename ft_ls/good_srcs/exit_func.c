@@ -16,14 +16,8 @@ void	exit_func(int i, char *str)
 {
 	if (i == 1)
 	{
-		ft_put_two_arg("ls: illegal option -- ", str);
+		ft_put_two_arg("ls: illegal option -- ", str, 1);
 		error_func("usage: ls [-AFGRUaflrtu1] [file ...]");
-		exit(0);
-	}
-	else if (i == 2)
-	{
-		ft_putstr("ls: ");
-		ft_put_two_arg(str, ": No such file or directory");
 		exit(0);
 	}
 }

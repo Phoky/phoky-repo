@@ -12,17 +12,17 @@
 
 #include "ft_ls.h"
 
-void	lst_add(t_bla **lst, t_bla *new)
+void	lst_add(t_dir **lst, t_dir *new)
 {
 	new->next = *lst;
 	*lst = new;
 }
 
-t_bla	*fill_b(struct dirent *rent)
+t_dir	*fill_b(struct dirent *rent)
 {
-	t_bla	*t;
+	t_dir	*t;
 
-	t = malloc(sizeof(t_bla));
+	t = malloc(sizeof(t_dir));
 	t->ino = rent->d_ino;
 	t->reclen = rent->d_reclen;
 	t->type = rent->d_type;
@@ -31,21 +31,20 @@ t_bla	*fill_b(struct dirent *rent)
 	return (t);
 }
 
-t_bla	*op_dir(char *arg)
+t_dir	*op_dir(char *arg)
 {
 	struct dirent	*ent;
 	DIR				*dir;
-	t_bla			*b;
-	t_bla			*t;
+	t_dir			*b;
+	t_dir			*t;
 
-	if ((dir = opendir(arg)) == NULL)
-		exit_func(2, arg);
+	dir = opendir(arg);
 	ent = malloc(sizeof(struct dirent));
 	ent = NULL;
 	b = NULL;
 	while ((ent = readdir(dir)) != NULL)
 	{
-		t = malloc(sizeof(t_bla));
+		t = malloc(sizeof(t_dir));
 		t = fill_b(ent);
 		lst_add(&b, t);
 	}
@@ -55,7 +54,7 @@ t_bla	*op_dir(char *arg)
 
 void	get_dir(char **argv, t_arg *opt)
 {
-	t_bla	*dir;
+	t_dir	*dir;
 	int		i;
 	int		j;
 
@@ -73,7 +72,7 @@ void	get_dir(char **argv, t_arg *opt)
 		{
 			dir = op_dir(argv[j]);
 			if (i > 1)
-				ft_put_two_arg(argv[j], ":");
+				ft_put_two_arg(argv[j], ":", 1);
 			print_dir(dir, opt);
 			j++;
 			if (j < i)
