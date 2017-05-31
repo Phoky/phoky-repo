@@ -24,7 +24,7 @@
 # include <sys/xattr.h>
 # include <time.h>
 
-typedef struct		s_bla
+typedef struct		s_dir
 {
 	ino_t			ino;
 	off_t			off;
@@ -32,8 +32,8 @@ typedef struct		s_bla
 	unsigned char	type;
 	unsigned char	namlen;
 	char			*name;
-	struct s_bla	*next;
-}					t_bla;
+	struct s_dir	*next;
+}					t_dir;
 
 typedef struct		s_arg
 {
@@ -65,11 +65,17 @@ void				get_dir(char **argv, t_arg *opt);
 /*
 **		print_dir.c
 */
-void				print_dir(t_bla *b, t_arg *opt);
+void				print_dir(t_dir *b, t_arg *opt);
 
 /*
 **		exit_func.c
 */
 void				exit_func(int i, char *str);
+
+/*
+**		sort_list.c
+*/
+void				sort_list(t_dir **list);
+void				rev_sort_list(t_dir **list);
 
 #endif
