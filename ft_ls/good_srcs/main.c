@@ -43,6 +43,26 @@ char			**removing_wrong_line(char **tbl, int i)
 	return (t);
 }
 
+void			print_res(struct stat *res)
+{
+	ft_putnbrendl(res->st_dev);
+	ft_putnbrendl(res->st_mode);
+	ft_putnbrendl(res->st_nlink);
+	ft_putnbrendl(res->st_ino);
+	ft_putnbrendl(res->st_uid);
+	ft_putnbrendl(res->st_gid);
+	ft_putnbrendl(res->st_rdev);
+	ft_putnbrendl(res->st_size);
+	ft_putnbrendl(res->st_blocks);
+	ft_putnbrendl(res->st_blksize);
+	ft_putnbrendl(res->st_flags);
+	ft_putnbrendl(res->st_gen);
+	ft_putnbrendl(res->st_lspare);
+	ft_putnbrendl(res->st_qspare[0]);
+	ft_putnbrendl(res->st_qspare[1]);
+	ft_putendl("\n");
+}
+
 static char		**check_regular_file(char **arg)
 {
 	int				i;
@@ -53,6 +73,7 @@ static char		**check_regular_file(char **arg)
 		return (arg);
 	while (arg[i])
 	{
+		ft_putendl(arg[i]);
 		if (stat(arg[i], &inf) == -1)
 		{
 			ft_put_two_arg("ls: ", arg[i], 0);
@@ -62,6 +83,7 @@ static char		**check_regular_file(char **arg)
 		}
 		else
 			i++;
+//		print_res(&inf);
 	}
 	if (*arg)
 	{
