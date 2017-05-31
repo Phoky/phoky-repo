@@ -46,3 +46,26 @@ void	sort_list(t_dir **list)
 		}
 	}
 }
+
+void	rev_sort_list(t_dir **list)
+{
+	t_dir	*tmp;
+	t_dir	*t;
+
+	tmp = *list;
+	t = tmp->next;
+	while (t->next)
+	{
+		if (ft_strcmp(t->name, tmp->name) > 0)
+		{
+			swap_link(&t, &tmp);
+			tmp = *list;
+			t = tmp->next;
+		}
+		else
+		{
+			tmp = tmp->next;
+			t = t->next;
+		}
+	}
+}
