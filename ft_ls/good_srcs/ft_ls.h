@@ -32,6 +32,8 @@ typedef struct		s_dir
 	unsigned char	type;
 	unsigned char	namlen;
 	char			*name;
+	int				root;
+	struct s_dir	*prev;
 	struct s_dir	*next;
 }					t_dir;
 
@@ -77,5 +79,11 @@ void				exit_func(int i, char *str);
 */
 void				sort_list(t_dir **list);
 void				rev_sort_list(t_dir **list);
+
+/*
+**		add_to_list.c
+*/
+void	add_top_list(t_dir **lst, t_dir *new);
+void	add_end_list(t_dir **lst, t_dir *new);
 
 #endif

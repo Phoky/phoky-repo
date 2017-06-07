@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_dir.c                                        :+:      :+:    :+:   */
+/*   add_to_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/30 10:02:26 by rcolleau          #+#    #+#             */
-/*   Updated: 2017/05/30 10:02:28 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/06/07 14:56:27 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/06/07 14:56:28 by rcolleau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static int	lstlen(t_dir *b)
+static int		lstlen(t_dir *b)
 {
 	int	i;
 
@@ -25,21 +25,7 @@ static int	lstlen(t_dir *b)
 	return (i);
 }
 
-int			hide_file_nbr(char **tbl)
-{
-	int		i;
-
-	i = 0;
-	while (tbl[i][0] == '.')
-	{
-		i++;
-		if (tbl[i] == NULL)
-			break ;
-	}
-	return (i);
-}
-
-void		print_dir(t_dir *b, t_arg *opt)
+void	dir_print(t_dir *b)
 {
 	t_dir	*tmp;
 	int		i;
@@ -56,8 +42,28 @@ void		print_dir(t_dir *b, t_arg *opt)
 		i--;
 		tmp = tmp->next;
 	}
-	if (opt->lower_a == 1)
-		ft_puttbl(tbl);
-	if (opt->lower_a == 0)
-		ft_put_rev_tbl(tbl + hide_file_nbr(tbl));
+}
+
+void	add_top_list(t_dir **lst, t_dir *new)
+{
+	new->next = *lst;
+	*lst = new;
+	dir_print(*lst);
+}
+
+void	add_end_list(t_dir **lst, t_dir *new)
+{
+	t_dir	*tmp;
+
+	tmp = *lst;
+	dir_print(tmp);
+	if (tmp == NULL)
+		tmp = new;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+		tmp->next = NULL;
+	}
 }

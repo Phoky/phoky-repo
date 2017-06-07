@@ -12,12 +12,6 @@
 
 #include "ft_ls.h"
 
-void	lst_add(t_dir **lst, t_dir *new)
-{
-	new->next = *lst;
-	*lst = new;
-}
-
 t_dir	*fill_b(struct dirent *rent)
 {
 	t_dir	*t;
@@ -46,7 +40,7 @@ t_dir	*op_dir(char *arg)
 	{
 		t = malloc(sizeof(t_dir));
 		t = fill_b(ent);
-		lst_add(&b, t);
+		add_top_list(&b, t);
 	}
 	b = t;
 	return (b);
@@ -63,7 +57,7 @@ void	get_dir(char **argv, t_arg *opt)
 	if (i == 0)
 	{
 		dir = op_dir(".");
-//		sort_list(&dir);
+		rev_sort_list(&dir);
 		print_dir(dir, opt);
 	}
 	else
@@ -71,6 +65,7 @@ void	get_dir(char **argv, t_arg *opt)
 		while (j < i)
 		{
 			dir = op_dir(argv[j]);
+			rev_sort_list(&dir);
 			if (i > 1)
 				ft_put_two_arg(argv[j], ":", 1);
 			print_dir(dir, opt);

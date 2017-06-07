@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_list.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcolleau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/07 10:18:22 by rcolleau          #+#    #+#             */
+/*   Updated: 2017/06/07 10:18:30 by rcolleau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 t_dir	*fill_link(t_dir *link)
@@ -53,14 +65,16 @@ void	rev_sort_list(t_dir **list)
 	t_dir	*t;
 
 	tmp = *list;
-	t = tmp->next;
+	t = *list;
+	t = t->next;
 	while (t->next)
 	{
 		if (ft_strcmp(t->name, tmp->name) > 0)
 		{
 			swap_link(&t, &tmp);
 			tmp = *list;
-			t = tmp->next;
+			t = *list;
+			t = t->next;
 		}
 		else
 		{
