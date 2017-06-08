@@ -23,6 +23,10 @@
 # include <grp.h>
 # include <sys/xattr.h>
 # include <time.h>
+# include <sys/utsname.h>
+
+# define MACOS 0
+# define LINUX 0
 
 typedef struct		s_dir
 {

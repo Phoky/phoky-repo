@@ -46,18 +46,20 @@ void		print_dir(t_dir *b, t_arg *opt)
 	char	**tbl;
 
 	tmp = b;
-	i = lstlen(b);
-	tbl = (char **)malloc(sizeof(char *) * i + 1);
-	tbl[i] = NULL;
-	i--;
+	tmp = tmp->next;
+//	i = lstlen(tmp);
+//	tbl = (char **)malloc(sizeof(char *) * i + 1);
+//	tbl[i] = NULL;
+//	i--;
 	while (tmp != NULL)
 	{
-		tbl[i] = ft_strdup(tmp->name);
-		i--;
+		ft_putendl(tmp->name);
+//		tbl[i] = ft_strdup(tmp->name);
+//		i--;
 		tmp = tmp->next;
 	}
-	if (opt->lower_a == 1)
-		ft_puttbl(tbl);
-	if (opt->lower_a == 0)
-		ft_put_rev_tbl(tbl + hide_file_nbr(tbl));
+//	if (opt->lower_a == 1)
+//		ft_puttbl(tbl);
+//	if (opt->lower_a == 0)
+//		ft_puttbl(tbl + hide_file_nbr(tbl));
 }

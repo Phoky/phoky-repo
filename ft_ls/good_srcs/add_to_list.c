@@ -25,22 +25,23 @@ static int		lstlen(t_dir *b)
 	return (i);
 }
 
-void	dir_print(t_dir *b)
+void	add_to_list(t_dir **lst, t_dir *new)
 {
+	char 	*s;
 	t_dir	*tmp;
-	int		i;
-	char	**tbl;
+	t_dir	*t;
 
-	tmp = b;
-	i = lstlen(b);
-	tbl = (char **)malloc(sizeof(char *) * i + 1);
-	tbl[i] = NULL;
-	i--;
-	while (tmp != NULL)
+	tmp = *lst;
+	t = *lst;
+	if (tmp == NULL)
 	{
-		tbl[i] = ft_strdup(tmp->name);
-		i--;
-		tmp = tmp->next;
+		new->root = 1;
+		tmp->next = new;
+		new->next = NULL;
+	}
+	else
+	{
+//		while (new->name->next)
 	}
 }
 
@@ -48,7 +49,6 @@ void	add_top_list(t_dir **lst, t_dir *new)
 {
 	new->next = *lst;
 	*lst = new;
-	dir_print(*lst);
 }
 
 void	add_end_list(t_dir **lst, t_dir *new)
@@ -56,14 +56,16 @@ void	add_end_list(t_dir **lst, t_dir *new)
 	t_dir	*tmp;
 
 	tmp = *lst;
-	dir_print(tmp);
 	if (tmp == NULL)
+	{
 		tmp = new;
+	}
 	else
 	{
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
-		tmp->next = NULL;
+		new->prev = tmp;
+		new->next = NULL;
 	}
 }

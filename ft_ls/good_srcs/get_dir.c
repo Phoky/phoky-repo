@@ -22,27 +22,29 @@ t_dir	*fill_b(struct dirent *rent)
 	t->type = rent->d_type;
 	t->namlen = rent->d_namlen;
 	t->name = rent->d_name;
+	t->root = 0;
 	return (t);
 }
 
-t_dir	*op_dir(char *arg)
+t_dir	*op_dir(t_dir *b, char *arg, t_arg *opt)
 {
 	struct dirent	*ent;
 	DIR				*dir;
-	t_dir			*b;
 	t_dir			*t;
 
 	dir = opendir(arg);
 	ent = malloc(sizeof(struct dirent));
 	ent = NULL;
-	b = NULL;
+	b = malloc(sizeof(struct dirent));
 	while ((ent = readdir(dir)) != NULL)
 	{
 		t = malloc(sizeof(t_dir));
 		t = fill_b(ent);
-		add_top_list(&b, t);
+		if (opt->upper_u == 1)
+			add_end_list(&b, t);
+		else
+			add_end_list(&b, t);
 	}
-	b = t;
 	return (b);
 }
 
@@ -54,18 +56,17 @@ void	get_dir(char **argv, t_arg *opt)
 
 	j = 0;
 	i = ft_tbllen(argv);
+	dir = NULL;
 	if (i == 0)
 	{
-		dir = op_dir(".");
-		rev_sort_list(&dir);
+		dir = op_dir(dir, ".", opt);
 		print_dir(dir, opt);
 	}
 	else
 	{
 		while (j < i)
 		{
-			dir = op_dir(argv[j]);
-			rev_sort_list(&dir);
+			dir = op_dir(dir, argv[j], opt);
 			if (i > 1)
 				ft_put_two_arg(argv[j], ":", 1);
 			print_dir(dir, opt);

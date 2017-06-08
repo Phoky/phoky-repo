@@ -126,7 +126,9 @@ int				main(int argc, char **argv)
 	t_arg			a;
 	char			*ill_arg;
 	int				i;
+	struct utsname	ut;
 
+	uname(&ut);
 	i = 1;
 	a = (t_arg){0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	if (argc > 1)
